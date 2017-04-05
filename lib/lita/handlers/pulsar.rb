@@ -10,7 +10,7 @@ module Lita
         args = cmd_args(response.args)
 
         Bundler.with_clean_env do
-          spawn("eval `ssh-agent -s` && ssh-add && bundle exec pulsar #{cmd_opts} #{args}; kill $SSH_AGENT_PID")
+          spawn("eval `ssh-agent -s` && ssh-add && bundle exec pulsar deploy #{cmd_opts} #{args}; kill $SSH_AGENT_PID")
         end
 
         response.reply 'OK, I will run a deploy soon...'
